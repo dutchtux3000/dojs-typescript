@@ -1,0 +1,12 @@
+{
+  "include": ["types/*.d.ts", "types/**/*.d.ts"],
+  "files": ["src/main.ts"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "outDir": "build",
+    "lib": ["ES6"]
+  },
+  "typeRoots": ["types", "types/**/*.d.ts"],
+  "types": []
+}

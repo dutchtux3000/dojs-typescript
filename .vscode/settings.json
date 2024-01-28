@@ -1,0 +1,5 @@
+{
+  "javascript.suggest.autoImports": false,
+  "search.useIgnoreFiles": true,
+  "editor.formatOnSave": true
+}

@@ -1,0 +1,26 @@
+{
+  "name": "dojs-ts-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd scripts && ./build.sh",
+    "build:tsc": "tsc",
+    "package": "cd build && zip ../dist/dojs/app.zip -FSr ./",
+    "types": "cd lib && tsc",
+    "fix:main": "jscodeshift -t ./scripts/remove-exports.ts ./build/main.js",
+    "fix:require": "jscodeshift -t ./scripts/fix-require.ts ./build/*.js",
+    "copy-to-dist": "cd build && cp -r . ../dist/dojs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@types/jscodeshift": "^0.11.11",
+    "jscodeshift": "^0.15.1"
+  }
+}
