@@ -64,7 +64,15 @@ declare class TexInfo {
      * @param {number} address destination memory address in texture memory.
      * @param {GR_MIPMAPLEVELMASK} evenOdd one of GR_MIPMAPLEVELMASK.
      */
-    DownloadMipMap(tmu: GR_TMU, address: number, evenOdd: GR_MIPMAPLEVELMASK): void;
+    DownloadMipMap(tmu: {
+        TMU0: number;
+        TMU1: number;
+        TMU2: number;
+    }, address: number, evenOdd: {
+        EVEN: number;
+        ODD: number;
+        BOTH: number;
+    }): void;
     /**
      * mark the texture as 'not downloaded' again.
      */
@@ -73,12 +81,20 @@ declare class TexInfo {
      * specify this TexInfo as the current texture source for rendering.
      * @param {GR_MIPMAPLEVELMASK} evenOdd one of GR_MIPMAPLEVELMASK.
      */
-    Source(evenOdd: GR_MIPMAPLEVELMASK): void;
+    Source(evenOdd: {
+        EVEN: number;
+        ODD: number;
+        BOTH: number;
+    }): void;
     /**
      * return the texture memory consumed by a texture
      * @param {GR_MIPMAPLEVELMASK} evenOdd one of GR_MIPMAPLEVELMASK.
      * @returns {number} size of texture in bytes.
      */
-    MemRequired(evenOdd: GR_MIPMAPLEVELMASK): number;
+    MemRequired(evenOdd: {
+        EVEN: number;
+        ODD: number;
+        BOTH: number;
+    }): number;
 }
 //# sourceMappingURL=TextInfo.d.ts.map

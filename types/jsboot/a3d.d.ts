@@ -292,6 +292,25 @@ declare function ClearScene(): void;
  * Deallocate memory previously allocated by CreateScene. Use this to avoid memory leaks in your program.
  */
 declare function DestroyScene(): void;
+declare namespace POLYTYPE {
+    let FLAT: number;
+    let GCOL: number;
+    let GRGB: number;
+    let ATEX: number;
+    let PTEX: number;
+    let ATEX_MASK: number;
+    let PTEX_MASK: number;
+    let ATEX_LIT: number;
+    let PTEX_LIT: number;
+    let ATEX_MASK_LIT: number;
+    let PTEX_MASK_LIT: number;
+    let ATEX_TRANS: number;
+    let PTEX_TRANS: number;
+    let ATEX_MASK_TRANS: number;
+    let PTEX_MASK_TRANS: number;
+    let MAX: number;
+    let ZBUF: number;
+}
 /** scaling factor x for the perspective projection */
 declare var _persp_xscale_f: number;
 /** scaling factor y for the perspective projection */

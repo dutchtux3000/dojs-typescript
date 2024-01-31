@@ -142,7 +142,14 @@ declare class Bitmap {
      * @param {GR_BUFFER} buffer one of FRONTBUFFER, BACKBUFFER or AUXBUFFER
      * @param {boolean} pipeline true if the pixels shall be processed by the voodoos pixel pipeline, false to just draw.
      */
-    FxDrawLfb(x: number, y: number, buffer: GR_BUFFER, pipeline: boolean): void;
+    FxDrawLfb(x: number, y: number, buffer: {
+        FRONTBUFFER: number;
+        BACKBUFFER: number;
+        AUXBUFFER: number;
+        DEPTHBUFFER: number;
+        ALPHABUFFER: number;
+        TRIPLEBUFFER: number;
+    }, pipeline: boolean): void;
     /**
      * clear the bitmap to EGA.BLACK.
      */

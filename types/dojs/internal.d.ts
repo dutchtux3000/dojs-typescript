@@ -686,7 +686,25 @@ declare function SetSceneGap(gap: number): void;
  * @param {Bitmap} texture texture Bitmap.
  * @param {V3D[]} v an array of vertices.
  */
-declare function Polygon3D(type: POLYTYPE, texture: Bitmap, v: V3D[]): void;
+declare function Polygon3D(type: {
+    FLAT: number;
+    GCOL: number;
+    GRGB: number;
+    ATEX: number;
+    PTEX: number;
+    ATEX_MASK: number;
+    PTEX_MASK: number;
+    ATEX_LIT: number;
+    PTEX_LIT: number;
+    ATEX_MASK_LIT: number;
+    PTEX_MASK_LIT: number;
+    ATEX_TRANS: number;
+    PTEX_TRANS: number;
+    ATEX_MASK_TRANS: number;
+    PTEX_MASK_TRANS: number;
+    MAX: number;
+    ZBUF: number;
+}, texture: Bitmap, v: V3D[]): void;
 /**
  * Draw 3d triangles, using vertices.
  *
@@ -696,7 +714,25 @@ declare function Polygon3D(type: POLYTYPE, texture: Bitmap, v: V3D[]): void;
  * @param {V3D} v2 a vertex.
  * @param {V3D} v3 a vertex.
  */
-declare function Triangle3D(type: POLYTYPE, texture: Bitmap, v1: V3D, v2: V3D, v3: V3D): void;
+declare function Triangle3D(type: {
+    FLAT: number;
+    GCOL: number;
+    GRGB: number;
+    ATEX: number;
+    PTEX: number;
+    ATEX_MASK: number;
+    PTEX_MASK: number;
+    ATEX_LIT: number;
+    PTEX_LIT: number;
+    ATEX_MASK_LIT: number;
+    PTEX_MASK_LIT: number;
+    ATEX_TRANS: number;
+    PTEX_TRANS: number;
+    ATEX_MASK_TRANS: number;
+    PTEX_MASK_TRANS: number;
+    MAX: number;
+    ZBUF: number;
+}, texture: Bitmap, v1: V3D, v2: V3D, v3: V3D): void;
 /**
  * Draw 3d quads using vertex.
  *
@@ -707,7 +743,25 @@ declare function Triangle3D(type: POLYTYPE, texture: Bitmap, v1: V3D, v2: V3D, v
  * @param {V3D} v3 a vertex.
  * @param {V3D} v4 a vertex.
  */
-declare function Quad3D(type: POLYTYPE, texture: Bitmap, v1: V3D, v2: V3D, v3: V3D, v4: V3D): void;
+declare function Quad3D(type: {
+    FLAT: number;
+    GCOL: number;
+    GRGB: number;
+    ATEX: number;
+    PTEX: number;
+    ATEX_MASK: number;
+    PTEX_MASK: number;
+    ATEX_LIT: number;
+    PTEX_LIT: number;
+    ATEX_MASK_LIT: number;
+    PTEX_MASK_LIT: number;
+    ATEX_TRANS: number;
+    PTEX_TRANS: number;
+    ATEX_MASK_TRANS: number;
+    PTEX_MASK_TRANS: number;
+    MAX: number;
+    ZBUF: number;
+}, texture: Bitmap, v1: V3D, v2: V3D, v3: V3D, v4: V3D): void;
 /**
  * Clips the polygon given in `v'. The frustum (viewing volume) is defined by -z&lt;x&lt;z, -z&lt;y&lt;z, 0&lt;min_z&lt;z&lt;max_z. If max_z&lt;=min_z, the z&lt;max_z clipping is not done. As you can see, clipping is done in the camera space, with perspective in mind, so this routine should be called after you apply the camera matrix, but before the perspective projection. The routine will correctly interpolate u, v, and c in the vertex structure. However, no provision is made for high/truecolor GCOL.
  *
@@ -718,7 +772,25 @@ declare function Quad3D(type: POLYTYPE, texture: Bitmap, v1: V3D, v2: V3D, v3: V
  *
  * @returns {V3D[]} an array of vertices.
  */
-declare function Clip3D(type: POLYTYPE, min_z: number, max_z: number, v: V3D[]): V3D[];
+declare function Clip3D(type: {
+    FLAT: number;
+    GCOL: number;
+    GRGB: number;
+    ATEX: number;
+    PTEX: number;
+    ATEX_MASK: number;
+    PTEX_MASK: number;
+    ATEX_LIT: number;
+    PTEX_LIT: number;
+    ATEX_MASK_LIT: number;
+    PTEX_MASK_LIT: number;
+    ATEX_TRANS: number;
+    PTEX_TRANS: number;
+    ATEX_MASK_TRANS: number;
+    PTEX_MASK_TRANS: number;
+    MAX: number;
+    ZBUF: number;
+}, min_z: number, max_z: number, v: V3D[]): V3D[];
 /**
  * Construct X axis rotation matrices. When applied to a point, these matrices will rotate it about the X axis by the specified angle (given in radians).
  *
@@ -879,7 +951,24 @@ declare function fxResetVertexLayout(): void;
  * specify the format of by-vertex arrays
  * @param {GR_PARAM[]} layout list of layout parameters.
  */
-declare function fxVertexLayout(layout: GR_PARAM[]): void;
+declare function fxVertexLayout(layout: {
+    XY: number;
+    Z: number;
+    W: number;
+    Q: number;
+    EXT: number;
+    A: number;
+    RGB: number;
+    PARGB: number;
+    ST0: number;
+    ST1: number;
+    ST2: number;
+    Q0: number;
+    Q1: number; /**
+    * @property {string} JSBOOT_ZIP path/name of the JSBOOT.ZIP
+    */
+    Q2: number;
+}[]): void;
 /**
  * @returns {number} the size of the currently active vertex layout in 'number of entries'.
  */
@@ -935,7 +1024,11 @@ declare function fxConstantColorValue(color: number): void;
  * set the cull mode.
  * @param {GR_CULL} mode the noew mode.
  */
-declare function fxCullMode(mode: GR_CULL): void;
+declare function fxCullMode(mode: {
+    DISABLE: number;
+    NEGATIVE: number;
+    POSITIVE: number;
+}): void;
 /**
  * specify the alpha blending function
  * @param {GR_BLEND} rgb_sf rgb source blending factor
@@ -943,7 +1036,87 @@ declare function fxCullMode(mode: GR_CULL): void;
  * @param {GR_BLEND} alpha_sf alpha source blending factor
  * @param {GR_BLEND} alpha_df alpha destination blending factor
  */
-declare function fxAlphaBlendFunction(rgb_sf: GR_BLEND, rgb_df: GR_BLEND, alpha_sf: GR_BLEND, alpha_df: GR_BLEND): void;
+declare function fxAlphaBlendFunction(rgb_sf: {
+    ZERO: number;
+    SRC_ALPHA: number;
+    SRC_COLOR: number;
+    DST_COLOR: number;
+    DST_ALPHA: number;
+    ONE: number;
+    ONE_MINUS_SRC_ALPHA: number;
+    ONE_MINUS_SRC_COLOR: number;
+    ONE_MINUS_DST_COLOR: number;
+    ONE_MINUS_DST_ALPHA: number;
+    RESERVED_8: number;
+    RESERVED_9: number;
+    RESERVED_A: number;
+    RESERVED_B: number;
+    RESERVED_C: number;
+    RESERVED_D: number;
+    RESERVED_E: number;
+    ALPHA_SATURATE: number;
+    PREFOG_COLOR: number;
+}, rgb_df: {
+    ZERO: number;
+    SRC_ALPHA: number;
+    SRC_COLOR: number;
+    DST_COLOR: number;
+    DST_ALPHA: number;
+    ONE: number;
+    ONE_MINUS_SRC_ALPHA: number;
+    ONE_MINUS_SRC_COLOR: number;
+    ONE_MINUS_DST_COLOR: number;
+    ONE_MINUS_DST_ALPHA: number;
+    RESERVED_8: number;
+    RESERVED_9: number;
+    RESERVED_A: number;
+    RESERVED_B: number;
+    RESERVED_C: number;
+    RESERVED_D: number;
+    RESERVED_E: number;
+    ALPHA_SATURATE: number;
+    PREFOG_COLOR: number;
+}, alpha_sf: {
+    ZERO: number;
+    SRC_ALPHA: number;
+    SRC_COLOR: number;
+    DST_COLOR: number;
+    DST_ALPHA: number;
+    ONE: number;
+    ONE_MINUS_SRC_ALPHA: number;
+    ONE_MINUS_SRC_COLOR: number;
+    ONE_MINUS_DST_COLOR: number;
+    ONE_MINUS_DST_ALPHA: number;
+    RESERVED_8: number;
+    RESERVED_9: number;
+    RESERVED_A: number;
+    RESERVED_B: number;
+    RESERVED_C: number;
+    RESERVED_D: number;
+    RESERVED_E: number;
+    ALPHA_SATURATE: number;
+    PREFOG_COLOR: number;
+}, alpha_df: {
+    ZERO: number;
+    SRC_ALPHA: number;
+    SRC_COLOR: number;
+    DST_COLOR: number;
+    DST_ALPHA: number;
+    ONE: number;
+    ONE_MINUS_SRC_ALPHA: number;
+    ONE_MINUS_SRC_COLOR: number;
+    ONE_MINUS_DST_COLOR: number;
+    ONE_MINUS_DST_ALPHA: number;
+    RESERVED_8: number;
+    RESERVED_9: number;
+    RESERVED_A: number;
+    RESERVED_B: number;
+    RESERVED_C: number;
+    RESERVED_D: number;
+    RESERVED_E: number;
+    ALPHA_SATURATE: number;
+    PREFOG_COLOR: number;
+}): void;
 /**
  * configure the alpha combine unit.
  * @param {GR_COMBINE_FUNCTION} func function
@@ -952,7 +1125,50 @@ declare function fxAlphaBlendFunction(rgb_sf: GR_BLEND, rgb_df: GR_BLEND, alpha_
  * @param {GR_COMBINE_OTHER} other other alpha
  * @param {boolean} invert invert generated alpha.
  */
-declare function fxAlphaCombine(func: GR_COMBINE_FUNCTION, factor: GR_COMBINE_FACTOR, local: GR_COMBINE_LOCAL, other: GR_COMBINE_OTHER, invert: boolean): void;
+declare function fxAlphaCombine(func: {
+    ZERO: number;
+    NONE: number;
+    LOCAL: number;
+    LOCAL_ALPHA: number;
+    SCALE_OTHER: number;
+    BLEND_OTHER: number;
+    SCALE_OTHER_ADD_LOCAL: number;
+    SCALE_OTHER_ADD_LOCAL_ALPHA: number;
+    SCALE_OTHER_MINUS_LOCAL: number;
+    SCALE_OTHER_MINUS_LOCAL_ADD_LOCAL: number;
+    BLEND: number;
+    SCALE_OTHER_MINUS_LOCAL_ADD_LOCAL_ALPHA: number;
+    SCALE_MINUS_LOCAL_ADD_LOCAL: number;
+    BLEND_LOCAL: number;
+    SCALE_MINUS_LOCAL_ADD_LOCAL_ALPHA: number;
+}, factor: {
+    ZERO: number;
+    NONE: number;
+    LOCAL: number;
+    OTHER_ALPHA: number;
+    LOCAL_ALPHA: number;
+    TEXTURE_ALPHA: number;
+    TEXTURE_RGB: number;
+    DETAIL_FACTOR: number;
+    LOD_FRACTION: number;
+    ONE: number;
+    ONE_MINUS_LOCAL: number;
+    ONE_MINUS_OTHER_ALPHA: number;
+    ONE_MINUS_LOCAL_ALPHA: number;
+    ONE_MINUS_TEXTURE_ALPHA: number;
+    ONE_MINUS_DETAIL_FACTOR: number;
+    ONE_MINUS_LOD_FRACTION: number;
+}, local: {
+    ITERATED: number;
+    CONSTANT: number;
+    NONE: number;
+    DEPTH: number;
+}, other: {
+    ITERATED: number;
+    TEXTURE: number;
+    CONSTANT: number;
+    NONE: number;
+}, invert: boolean): void;
 /**
  * configure the color combine unit.
  * @param {GR_COMBINE_FUNCTION} func function
@@ -961,7 +1177,50 @@ declare function fxAlphaCombine(func: GR_COMBINE_FUNCTION, factor: GR_COMBINE_FA
  * @param {GR_COMBINE_OTHER} other other alpha
  * @param {boolean} invert invert generated alpha.
  */
-declare function fxColorCombine(func: GR_COMBINE_FUNCTION, factor: GR_COMBINE_FACTOR, local: GR_COMBINE_LOCAL, other: GR_COMBINE_OTHER, invert: boolean): void;
+declare function fxColorCombine(func: {
+    ZERO: number;
+    NONE: number;
+    LOCAL: number;
+    LOCAL_ALPHA: number;
+    SCALE_OTHER: number;
+    BLEND_OTHER: number;
+    SCALE_OTHER_ADD_LOCAL: number;
+    SCALE_OTHER_ADD_LOCAL_ALPHA: number;
+    SCALE_OTHER_MINUS_LOCAL: number;
+    SCALE_OTHER_MINUS_LOCAL_ADD_LOCAL: number;
+    BLEND: number;
+    SCALE_OTHER_MINUS_LOCAL_ADD_LOCAL_ALPHA: number;
+    SCALE_MINUS_LOCAL_ADD_LOCAL: number;
+    BLEND_LOCAL: number;
+    SCALE_MINUS_LOCAL_ADD_LOCAL_ALPHA: number;
+}, factor: {
+    ZERO: number;
+    NONE: number;
+    LOCAL: number;
+    OTHER_ALPHA: number;
+    LOCAL_ALPHA: number;
+    TEXTURE_ALPHA: number;
+    TEXTURE_RGB: number;
+    DETAIL_FACTOR: number;
+    LOD_FRACTION: number;
+    ONE: number;
+    ONE_MINUS_LOCAL: number;
+    ONE_MINUS_OTHER_ALPHA: number;
+    ONE_MINUS_LOCAL_ALPHA: number;
+    ONE_MINUS_TEXTURE_ALPHA: number;
+    ONE_MINUS_DETAIL_FACTOR: number;
+    ONE_MINUS_LOD_FRACTION: number;
+}, local: {
+    ITERATED: number;
+    CONSTANT: number;
+    NONE: number;
+    DEPTH: number;
+}, other: {
+    ITERATED: number;
+    TEXTURE: number;
+    CONSTANT: number;
+    NONE: number;
+}, invert: boolean): void;
 /**
  * enable/disable writing into the color and alpha buffers
  * @param {number} rgb color mask
@@ -978,17 +1237,39 @@ declare function fxDepthMask(enable: boolean): void;
  * @param {GR_VERTEX} mode vertex type
  * @param {number[][]} vertices array of vertices.
  */
-declare function fxDrawVertexArray(mode: GR_VERTEX, vertices: number[][]): void;
+declare function fxDrawVertexArray(mode: {
+    POINTS: number;
+    LINE_STRIP: number;
+    LINES: number;
+    POLYGON: number;
+    TRIANGLE_STRIP: number;
+    TRIANGLE_FAN: number;
+    TRIANGLES: number;
+    TRIANGLE_STRIP_CONTINUE: number;
+    TRIANGLE_FAN_CONTINUE: number;
+}, vertices: number[][]): void;
 /**
  * enable Glide operating modes
  * @param {GR_ENABLE} val one of GR_ENABLE.
  */
-declare function fxEnable(val: GR_ENABLE): void;
+declare function fxEnable(val: {
+    AA_ORDERED: number;
+    ALLOW_MIPMAP_DITHER: number;
+    PASSTHRU: number;
+    SHAMELESS_PLUG: number;
+    VIDEO_SMOOTHING: number;
+}): void;
 /**
  * enable Glide operating modes
  * @param {GR_ENABLE} val one of GR_ENABLE.
  */
-declare function fxDisable(val: GR_ENABLE): void;
+declare function fxDisable(val: {
+    AA_ORDERED: number;
+    ALLOW_MIPMAP_DITHER: number;
+    PASSTHRU: number;
+    SHAMELESS_PLUG: number;
+    VIDEO_SMOOTHING: number;
+}): void;
 /**
  * disable all special effects in the graphics subsystem
  */
@@ -1007,7 +1288,11 @@ declare function fxAADrawTriangle(a: number[], b: number[], c: number[], b1: boo
  * set dither mode.
  * @param {GR_DITHER} mode the new dither mode.
  */
-declare function fxDitherMode(mode: GR_DITHER): void;
+declare function fxDitherMode(mode: {
+    DISABLE: number;
+    D2x2: number;
+    D4x4: number;
+}): void;
 /**
  * enables/disables alpha controlled lighting
  * @param {boolean} enable enable/disable
@@ -1024,17 +1309,45 @@ declare function fxGammaCorrectionRGB(r: number, g: any, b: any): void;
  * establishes a y origin
  * @param {GR_ORIGIN} origin set y origin.
  */
-declare function fxOrigin(origin: GR_ORIGIN): void;
+declare function fxOrigin(origin: {
+    UPPER_LEFT: number;
+    LOWER_LEFT: number;
+    ANY: number;
+}): void;
 /**
  * set the depth buffering mode
  * @param {GR_DEPTHBUFFER} mode the mode
  */
-declare function fxDepthBufferMode(mode: GR_DEPTHBUFFER): void;
+declare function fxDepthBufferMode(mode: {
+    DISABLE: number;
+    ZBUFFER: number;
+    /**
+     * draw a line with given width.
+     * @param {number} x1 start x coordinate.
+     * @param {number} y1 start y coordinate.
+     * @param {number} x2 end x coordinate.
+     * @param {number} y2 end y coordinate.
+     * @param {number} w line width.
+     * @param {number} c color.
+     */
+    WBUFFER: number;
+    ZBUFFER_COMPARE_TO_BIAS: number;
+    WBUFFER_COMPARE_TO_BIAS: number;
+}): void;
 /**
  * specify the depth buffer comparison function
  * @param {GR_CMP} func the new function
  */
-declare function fxDepthBufferFunction(func: GR_CMP): void;
+declare function fxDepthBufferFunction(func: {
+    NEVER: number;
+    LESS: number;
+    EQUAL: number;
+    LEQUAL: number;
+    GREATER: number;
+    NOTEQUAL: number;
+    GEQUAL: number;
+    ALWAYS: number;
+}): void;
 /**
  * set the depth bias level
  * @param {number} level th new level.
@@ -1058,7 +1371,15 @@ declare function fxViewport(x: number, y: number, width: number, height: number)
  * enable/disable per-pixel fog blending operations
  * @param {GR_FOG} mode the new fog mode.
  */
-declare function fxFogMode(mode: GR_FOG): void;
+declare function fxFogMode(mode: {
+    DISABLE: number;
+    WITH_TABLE_ON_FOGCOORD_EXT: number;
+    WITH_TABLE_ON_Q: number;
+    WITH_TABLE_ON_W: number;
+    WITH_ITERATED_Z: number;
+    MULT2: number;
+    ADD2: number;
+}): void;
 /**
  * set the global fog color
  * @param {number} color the new fog color
@@ -1107,7 +1428,16 @@ declare function fxChromakeyValue(val: number): void;
  * specify the alpha test function
  * @param {GR_CMP} func the function
  */
-declare function fxAlphaTestFunction(func: GR_CMP): void;
+declare function fxAlphaTestFunction(func: {
+    NEVER: number;
+    LESS: number;
+    EQUAL: number;
+    LEQUAL: number;
+    GREATER: number;
+    NOTEQUAL: number;
+    GEQUAL: number;
+    ALWAYS: number;
+}): void;
 /**
  * specify the alpha test reference value
  * @param {number} value The new alpha test reference value.
@@ -1119,27 +1449,61 @@ declare function fxAlphaTestReferenceValue(value: number): void;
  * @param {GR_TEXTUREFILTER} minFilter The minification filter
  * @param {GR_TEXTUREFILTER} magFilter The magnification filter
  */
-declare function fxTexFilterMode(tmu: GR_TMU, minFilter: GR_TEXTUREFILTER, magFilter: GR_TEXTUREFILTER): void;
+declare function fxTexFilterMode(tmu: {
+    TMU0: number;
+    TMU1: number;
+    TMU2: number;
+}, minFilter: {
+    POINT_SAMPLED: number;
+    BILINEAR: number;
+}, magFilter: {
+    POINT_SAMPLED: number;
+    BILINEAR: number;
+}): void;
 /**
  * set the texture map clamping/wrapping mode
  * @param {GR_TMU} tmu the TMU.
  * @param {GR_TEXTURECLAMP} sMode The new mode for the s direction
  * @param {GR_TEXTURECLAMP} tMode The new mode for the t direction
  */
-declare function fxTexClampMode(tmu: GR_TMU, sMode: GR_TEXTURECLAMP, tMode: GR_TEXTURECLAMP): void;
+declare function fxTexClampMode(tmu: {
+    TMU0: number;
+    TMU1: number;
+    TMU2: number;
+}, sMode: {
+    WRAP: number;
+    CLAMP: number;
+    MIRROR_EXT: number;
+}, tMode: {
+    WRAP: number;
+    CLAMP: number;
+    MIRROR_EXT: number;
+}): void;
 /**
  * set the mipmapping mode
  * @param {GR_TMU} tmu the TMU.
  * @param {GR_MIPMAP} mode The new mipmapping mode
  * @param {boolean} lodBlend enables/disables LOD blending
  */
-declare function fxTexMipMapMode(tmu: GR_TMU, mode: GR_MIPMAP, lodBlend: boolean): void;
+declare function fxTexMipMapMode(tmu: {
+    TMU0: number;
+    TMU1: number;
+    TMU2: number;
+}, mode: {
+    DISABLE: number;
+    NEAREST: number;
+    NEAREST_DITHER: number;
+}, lodBlend: boolean): void;
 /**
  * set the LOD bias value
  * @param {GR_TMU} tmu the TMU.
  * @param {number} bias The new LOD bias value, a signed floating point value in the range [-8..7.75].
  */
-declare function fxTexLodBiasValue(tmu: GR_TMU, bias: number): void;
+declare function fxTexLodBiasValue(tmu: {
+    TMU0: number;
+    TMU1: number;
+    TMU2: number;
+}, bias: number): void;
 /**
  * configure a texture combine unit
  * @param {GR_TMU} tmu the TMU.
@@ -1150,7 +1514,77 @@ declare function fxTexLodBiasValue(tmu: GR_TMU, bias: number): void;
  * @param {boolean} rgb_invert Specifies whether the generated texture color should be bitwise inverted as a final step.
  * @param {boolean} alpha_invert Specifies whether the generated texture alpha should be bitwise inverted as a final step.
  */
-declare function fxTexCombine(tmu: GR_TMU, rgb_func: GR_COMBINE_FUNCTION, rgb_factor: GR_COMBINE_FACTOR, alpha_func: GR_COMBINE_FUNCTION, alpha_factor: GR_COMBINE_FACTOR, rgb_invert: boolean, alpha_invert: boolean): void;
+declare function fxTexCombine(tmu: {
+    TMU0: number;
+    TMU1: number;
+    TMU2: number;
+}, rgb_func: {
+    ZERO: number;
+    NONE: number;
+    LOCAL: number;
+    LOCAL_ALPHA: number;
+    SCALE_OTHER: number;
+    BLEND_OTHER: number;
+    SCALE_OTHER_ADD_LOCAL: number;
+    SCALE_OTHER_ADD_LOCAL_ALPHA: number;
+    SCALE_OTHER_MINUS_LOCAL: number;
+    SCALE_OTHER_MINUS_LOCAL_ADD_LOCAL: number;
+    BLEND: number;
+    SCALE_OTHER_MINUS_LOCAL_ADD_LOCAL_ALPHA: number;
+    SCALE_MINUS_LOCAL_ADD_LOCAL: number;
+    BLEND_LOCAL: number;
+    SCALE_MINUS_LOCAL_ADD_LOCAL_ALPHA: number;
+}, rgb_factor: {
+    ZERO: number;
+    NONE: number;
+    LOCAL: number;
+    OTHER_ALPHA: number;
+    LOCAL_ALPHA: number;
+    TEXTURE_ALPHA: number;
+    TEXTURE_RGB: number;
+    DETAIL_FACTOR: number;
+    LOD_FRACTION: number;
+    ONE: number;
+    ONE_MINUS_LOCAL: number;
+    ONE_MINUS_OTHER_ALPHA: number;
+    ONE_MINUS_LOCAL_ALPHA: number;
+    ONE_MINUS_TEXTURE_ALPHA: number;
+    ONE_MINUS_DETAIL_FACTOR: number;
+    ONE_MINUS_LOD_FRACTION: number;
+}, alpha_func: {
+    ZERO: number;
+    NONE: number;
+    LOCAL: number;
+    LOCAL_ALPHA: number;
+    SCALE_OTHER: number;
+    BLEND_OTHER: number;
+    SCALE_OTHER_ADD_LOCAL: number;
+    SCALE_OTHER_ADD_LOCAL_ALPHA: number;
+    SCALE_OTHER_MINUS_LOCAL: number;
+    SCALE_OTHER_MINUS_LOCAL_ADD_LOCAL: number;
+    BLEND: number;
+    SCALE_OTHER_MINUS_LOCAL_ADD_LOCAL_ALPHA: number;
+    SCALE_MINUS_LOCAL_ADD_LOCAL: number;
+    BLEND_LOCAL: number;
+    SCALE_MINUS_LOCAL_ADD_LOCAL_ALPHA: number;
+}, alpha_factor: {
+    ZERO: number;
+    NONE: number;
+    LOCAL: number;
+    OTHER_ALPHA: number;
+    LOCAL_ALPHA: number;
+    TEXTURE_ALPHA: number;
+    TEXTURE_RGB: number;
+    DETAIL_FACTOR: number;
+    LOD_FRACTION: number;
+    ONE: number;
+    ONE_MINUS_LOCAL: number;
+    ONE_MINUS_OTHER_ALPHA: number;
+    ONE_MINUS_LOCAL_ALPHA: number;
+    ONE_MINUS_TEXTURE_ALPHA: number;
+    ONE_MINUS_DETAIL_FACTOR: number;
+    ONE_MINUS_LOD_FRACTION: number;
+}, rgb_invert: boolean, alpha_invert: boolean): void;
 /**
  * set the detail texturing controls
  * @param {GR_TMU} tmu the TMU.
@@ -1158,7 +1592,11 @@ declare function fxTexCombine(tmu: GR_TMU, rgb_func: GR_COMBINE_FUNCTION, rgb_fa
  * @param {number} detailScale Controls the steepness of the blend. Values are in the range [0..7] are valid. The scale is computed as 2^detailScale.
  * @param {number} detailMax Controls the maximum blending that occurs. Values in the range [0.0..1.0] are valid.
  */
-declare function fxTexDetailControl(tmu: GR_TMU, lodBias: number, detailScale: number, detailMax: number): void;
+declare function fxTexDetailControl(tmu: {
+    TMU0: number;
+    TMU1: number;
+    TMU2: number;
+}, lodBias: number, detailScale: number, detailMax: number): void;
 /**
  * return the texture memory consumed by a texture.
  * @param {GR_LOD} smallLod smallest level of detail
@@ -1168,27 +1606,100 @@ declare function fxTexDetailControl(tmu: GR_TMU, lodBias: number, detailScale: n
  *
  * @returns {number} number of bytes required
  */
-declare function fxTexCalcMemRequired(smallLod: GR_LOD, largeLod: GR_LOD, aspect: GR_ASPECT, format: GR_TEXFMT): number;
+declare function fxTexCalcMemRequired(smallLod: {
+    LOG2_256: number;
+    LOG2_128: number;
+    LOG2_64: number;
+    LOG2_32: number;
+    LOG2_16: number;
+    LOG2_8: number;
+    LOG2_4: number;
+    LOG2_2: number;
+    LOG2_1: number;
+}, largeLod: {
+    LOG2_256: number;
+    LOG2_128: number;
+    LOG2_64: number;
+    LOG2_32: number;
+    LOG2_16: number;
+    LOG2_8: number;
+    LOG2_4: number;
+    LOG2_2: number;
+    LOG2_1: number;
+}, aspect: {
+    LOG2_8x1: number;
+    LOG2_4x1: number;
+    LOG2_2x1: number;
+    LOG2_1x1: number;
+    LOG2_1x2: number;
+    LOG2_1x4: number;
+    LOG2_1x8: number;
+}, format: {
+    BIT8: number;
+    RGB_332: number;
+    YIQ_422: number;
+    ALPHA_8: number;
+    INTENSITY_8: number;
+    ALPHA_INTENSITY_44: number;
+    P_8: number;
+    RSVD0: number;
+    P_8_6666: number;
+    P_8_6666_EXT: number;
+    RSVD1: number;
+    BIT16: number;
+    ARGB_8332: number;
+    AYIQ_8422: number;
+    RGB_565: number;
+    ARGB_1555: number;
+    ARGB_4444: number;
+    ALPHA_INTENSITY_88: number;
+    AP_88: number;
+    RSVD2: number; /**
+     * Save current screen to TGA file.
+     * @param {string} fname filename.
+     */
+    RSVD4: number;
+}): number;
 /**
  * selects the current color buffer for drawing and clearing
  * @param {GR_BUFFER} buffer Selects the current color buffer. Valid values are GR_BUFFER_FRONTBUFFER and GR_BUFFER_BACKBUFFER.
  */
-declare function fxRenderBuffer(buffer: GR_BUFFER): void;
+declare function fxRenderBuffer(buffer: {
+    FRONTBUFFER: number;
+    BACKBUFFER: number;
+    AUXBUFFER: number;
+    DEPTHBUFFER: number;
+    ALPHABUFFER: number;
+    TRIPLEBUFFER: number;
+}): void;
 /**
  * return the lowest start address for texture downloads
  * @param {GR_TMU} tmu the TMU.
  */
-declare function fxTexMinAddress(tmu: GR_TMU): void;
+declare function fxTexMinAddress(tmu: {
+    TMU0: number;
+    TMU1: number;
+    TMU2: number;
+}): void;
 /**
  * return the highest start address for texture downloads
  * @param {GR_TMU} tmu the TMU.
  */
-declare function fxTexMaxAddress(tmu: GR_TMU): void;
+declare function fxTexMaxAddress(tmu: {
+    TMU0: number;
+    TMU1: number;
+    TMU2: number;
+}): void;
 /**
  * select an NCC table
  * @param {GR_TEXTABLE} table NCC table to use for decompressing compressed textures. Valid values are GR_TEXTABLE_NCC0 and GR_TEXTABLE_NCC1.
  */
-declare function fxTexNCCTable(table: GR_TEXTABLE): void;
+declare function fxTexNCCTable(table: {
+    NCC0: number;
+    NCC1: number;
+    PALETTE: number;
+    PALETTE_6666_EXT: number;
+}): void;
 /**
  * @returns {number[]} The minimum and maximum allowable z buffer values.
  */

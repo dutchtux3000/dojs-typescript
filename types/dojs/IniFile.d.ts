@@ -23,9 +23,15 @@ declare class IniFile {
      *
      * @param {string} [section] the section to search for the key, can be omitted.
      * @param {string} key the key to search.
-     *
      * @returns {string} the value if found or null.
      */
     Get(section: string, key: string): string;
+    /**
+     * get a key from a section of the INI.
+     *
+     * @param {string} key the key to search.
+     * @returns {string} the value if found or null.
+     */
+    Get(key: string): string;
 }
 //# sourceMappingURL=IniFile.d.ts.map

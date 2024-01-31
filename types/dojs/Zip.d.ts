@@ -5,7 +5,12 @@
  * @param {ZIPFILE} mode READ, WRITE or APPEND.
  * @param {number} [compression] 1..9 to specify compression level.
  */
-declare function Zip(filename: string, mode: ZIPFILE, compression?: number): void;
+declare function Zip(filename: string, mode: {
+    READ: string;
+    WRITE: string;
+    DELETE: string;
+    APPEND: string;
+}, compression?: number): void;
 declare class Zip {
     /**
      * Open a ZIP, for file modes see {@link ZIPFILE}.
@@ -14,7 +19,12 @@ declare class Zip {
      * @param {ZIPFILE} mode READ, WRITE or APPEND.
      * @param {number} [compression] 1..9 to specify compression level.
      */
-    constructor(filename: string, mode: ZIPFILE, compression?: number);
+    constructor(filename: string, mode: {
+        READ: string;
+        WRITE: string;
+        DELETE: string;
+        APPEND: string;
+    }, compression?: number);
     /**
      * close ZIP.
      */

@@ -5,7 +5,11 @@
  * @param {string} filename the name of the file.
  * @param {FILE} mode READ, WRITE or APPEND.
  */
-declare function File(filename: string, mode: FILE): void;
+declare function File(filename: string, mode: {
+    READ: string;
+    WRITE: string;
+    APPEND: string;
+}): void;
 declare class File {
     /**
      * Open a file, for file modes see {@link FILE}. Files can only either be read or written, never both. Writing to a closed file throws an exception.
@@ -14,7 +18,11 @@ declare class File {
      * @param {string} filename the name of the file.
      * @param {FILE} mode READ, WRITE or APPEND.
      */
-    constructor(filename: string, mode: FILE);
+    constructor(filename: string, mode: {
+        READ: string;
+        WRITE: string;
+        APPEND: string;
+    });
     /**
      * Name of the file.
      * @member {string}
