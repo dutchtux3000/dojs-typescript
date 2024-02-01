@@ -175,11 +175,11 @@ declare class Curl {
      */
     SetPut(put_data: ByteArray): void;
     /**
-     * @return {string} return the last effectively used URL.
+     * @returns {string} return the last effectively used URL.
      */
     GetLastUrl(): string;
     /**
-     * @return {number} get the last generated response code.
+     * @returns {number} get the last generated response code.
      */
     GetResponseCode(): number;
     /**

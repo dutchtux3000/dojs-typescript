@@ -1,12 +1,12 @@
 /**
  * Create Color() from HSB[A].
  *
- * @param {number}require h the hue [0..255].
+ * @param {number} h the hue [0..255].
  * @param {number} s the saturation [0..255].
  * @param {number} b the brightness [0..255].
  * @param {number} a the alpha value [0..255].
  */
-declare function HSBColor(h: any, s: number, b: number, a: number): number;
+declare function HSBColor(h: number, s: number, b: number, a: number): number;
 declare namespace EGA {
     let BLACK: number;
     let BLUE: number;

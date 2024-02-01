@@ -7,7 +7,7 @@ declare function LoadLibrary(name: string): void;
 /**
  * Get a list of loaded native libraries.
  *
- * @return {string[]} a list of loaded libraries.
+ * @returns {string[]} a list of loaded libraries.
  */
 declare function GetLoadedLibraries(): string[];
 /**
@@ -312,6 +312,25 @@ declare function FilledPolygon(points: number[][], c: number): void;
 */
 declare function TextXY(x: number, y: number, text: any, fg: number, bg: number): void;
 /**
+ * set the character to print for missing codepoints in the current font. Default is "^".
+ * @param {string} ch a one character string.
+ */
+declare function SetMissingCharacter(ch: string): void;
+/**
+ * converts the UTF8 string to the internal encoding (only useful if internal encoding is not UTF8).
+ *
+ * @param {string} str string to convert.
+ * @returns {string} converted string.
+ */
+declare function FromUTF8(str: string): string;
+/**
+ * converts the internal string encoding to UTF8 (only useful if internal encoding is not UTF8).
+ *
+ * @param {string} str string to convert.
+ * @returns {string} converted string.
+ */
+declare function ToUTF8(str: string): string;
+/**
  * Save current screen to BMP file.
  * @param {string} fname filename.
  */
@@ -423,7 +442,7 @@ declare function Stop(): void;
 declare function Sleep(ms: number): void;
 /**
  * Get ms timestamp.
- * @return {number} ms time.
+ * @returns {number} ms time.
  */
 declare function MsecTime(): number;
 /**
@@ -501,7 +520,7 @@ declare function GetDrive(): void;
  *
  * @param {number} drive the new default drive.
  *
- * @return the number of available logical drives.
+ * @returns the number of available logical drives.
  */
 declare function SetDrive(drive: number): void;
 /**
@@ -541,16 +560,15 @@ declare function SetExitMessage(msg: string): void;
  * @returns {number} the return code of the command.
  */
 declare function System(cmd: string, flags: {
-    /**
-     * read a byte value from a hardware io-port.
-     * @param {number} port port address to read from.
-     * @returns {number} 8-bit value read from port.
-     */
     MOUSE: number;
     SOUND: number;
     JOYSTICK: number;
     KEYBOARD: number;
-    TIMER: number;
+    TIMER: number; /**
+     * write a byte value to a hardware io-port.
+     * @param {number} port port address to write to.
+     * @param {number} value 8-bit value to write to port.
+     */
 }): number;
 /**
  * write a byte value to a hardware io-port.
@@ -1321,15 +1339,6 @@ declare function fxOrigin(origin: {
 declare function fxDepthBufferMode(mode: {
     DISABLE: number;
     ZBUFFER: number;
-    /**
-     * draw a line with given width.
-     * @param {number} x1 start x coordinate.
-     * @param {number} y1 start y coordinate.
-     * @param {number} x2 end x coordinate.
-     * @param {number} y2 end y coordinate.
-     * @param {number} w line width.
-     * @param {number} c color.
-     */
     WBUFFER: number;
     ZBUFFER_COMPARE_TO_BIAS: number;
     WBUFFER_COMPARE_TO_BIAS: number;
@@ -1654,10 +1663,7 @@ declare function fxTexCalcMemRequired(smallLod: {
     ARGB_4444: number;
     ALPHA_INTENSITY_88: number;
     AP_88: number;
-    RSVD2: number; /**
-     * Save current screen to TGA file.
-     * @param {string} fname filename.
-     */
+    RSVD2: number;
     RSVD4: number;
 }): number;
 /**

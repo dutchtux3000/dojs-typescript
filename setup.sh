@@ -1,6 +1,6 @@
 #/bin/bash
 set -e
-DOJS_URL=https://github.com/SuperIlu/DOjS/releases/download/v1.110/dojs-1.11.0.zip
+DOJS_URL=https://github.com/SuperIlu/DOjS/releases/download/v1.120/dojs-1.12.0.zip
 
 echo Run NPM install
 # npm install

@@ -7,10 +7,10 @@ declare function IpxAddressToString(addr: IpxAddress): string;
 /**
  * Convert an address in hex-string notation back to an JS array.
  *
- * @param {*} addr a string of 6 hex numbers separated by ':'.
+ * @param {string} addr a string of 6 hex numbers separated by ':'.
  * @returns {IpxAddress} An array of six numbers.
  */
-declare function IpxStringToAddress(addr: any): IpxAddress;
+declare function IpxStringToAddress(addr: string): IpxAddress;
 /**
  * discover nodes on the network.
  *

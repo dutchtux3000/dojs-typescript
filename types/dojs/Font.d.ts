@@ -1,5 +1,9 @@
 /**
  * Load a '.FNT' file for GRX.
+ *
+ * Please note that text rendering uses UTF8, but not all fonts provide all code points.
+ * @see SetMissingCharacter()
+ *
  * @class
  * @param {*} filename name of the font file.
  */
@@ -7,6 +11,10 @@ declare function Font(filename: any): void;
 declare class Font {
     /**
      * Load a '.FNT' file for GRX.
+     *
+     * Please note that text rendering uses UTF8, but not all fonts provide all code points.
+     * @see SetMissingCharacter()
+     *
      * @class
      * @param {*} filename name of the font file.
      */
@@ -21,6 +29,11 @@ declare class Font {
      * @member {number}
      */
     height: number;
+    /**
+     * Font character ranges. An array of ranges (two entry arrays with start/end codepoints)
+     * @member {number[][]}
+     */
+    ranges: any[];
     /**
      * Draw a left aligned string to the canvas.
      * @param {number} x x position
