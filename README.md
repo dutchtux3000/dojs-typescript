@@ -4,7 +4,7 @@
 
 - Node Version 20.3.1
 - NPM
-- DOjS version 1.11
+- DOjS version 1.20
 - DosBox (Optional for testing)
 
 This repository is only tested in a Linux environment. For Windows use WSL
@@ -49,7 +49,6 @@ After that is done the files are compiled js files are modified with `jsCodeshif
 It modifies the following things.
 
 - in the `main.js` the line `Object.defineProperty(exports, "__esModule", { value: true });` is removed. (exports in not available in main.js)
-- in all files the CommonJS function `require` is renamed to DOjS `Require` function.
 
 After that all is done the files are copied to
 
