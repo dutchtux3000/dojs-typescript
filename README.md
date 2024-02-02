@@ -4,7 +4,7 @@
 
 - Node Version 20.3.1
 - NPM
-- DOjS version 1.20
+- DOjS version 1.20.1
 - DosBox (Optional for testing)
 
 This repository is only tested in a Linux environment. For Windows use WSL
@@ -49,6 +49,7 @@ After that is done the files are compiled js files are modified with `jsCodeshif
 It modifies the following things.
 
 - in the `main.js` the line `Object.defineProperty(exports, "__esModule", { value: true });` is removed. (exports in not available in main.js)
+- fix require path to use the root of the build folder instead of path of the file.
 
 After that all is done the files are copied to
 

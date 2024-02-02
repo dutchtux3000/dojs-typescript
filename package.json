@@ -10,7 +10,7 @@
     "package": "cd build && zip ../dist/dojs/app.zip -FSr ./",
     "types": "cd lib && tsc",
     "fix:main": "jscodeshift -t ./scripts/remove-exports.ts ./build/main.js",
-    "fix:require": "jscodeshift -t ./scripts/fix-require.ts ./build/*.js",
+    "fix:require": "jscodeshift -t ./scripts/fix-require.ts ./build --rootPath=./build",
     "copy-to-dist": "cd build && cp -r . ../dist/dojs"
   },
   "keywords": [],
