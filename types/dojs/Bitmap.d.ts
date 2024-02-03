@@ -86,7 +86,12 @@ declare class Bitmap {
     * @param { number } height bitmap height.
     * @param { GR_BUFFER } [buffer] one of FRONTBUFFER, BACKBUFFER or AUXBUFFER for 3dfx access, omit for normal screen acccess.
     */
-    constructor(filename: any);
+    constructor(filename: string);
+    constructor(blurhash: string, width: number, height: number, punch?: number);
+    constructor(width: number, height: number, color?: number);
+    constructor(data: number[], width: number, height: number);
+    constructor(data: ByteArray);
+    constructor(x: number, y: number, width: number, height: number, buffer?: any);
     /**
      * Name of the file.
      * @member {string}
